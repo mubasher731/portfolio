@@ -23,11 +23,10 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Static header.
-          It sits in the normal page flow, flush against the top, left and
-          right edges of the viewport, so it scrolls away with the page
-          instead of hovering over it. */}
-      <header className="relative z-40 w-full border-b border-white/10 bg-ink-950/85 backdrop-blur">
+      {/* Sticky header.
+          It stays pinned to the top of the viewport while the page scrolls,
+          so navigation is always reachable. */}
+      <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-ink-950/85 backdrop-blur">
         <nav className="container-x flex h-16 items-center gap-3 sm:h-20">
           {/* ---------------------------------------------------------------- */}
           {/* Brand                                                            */}

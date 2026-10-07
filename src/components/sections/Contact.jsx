@@ -60,10 +60,10 @@ const Contact = () => {
     <section id="contact" className="relative py-20 md:py-28">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something"
-          highlight="together"
-          description="Have an app idea, a role or just a question? My inbox is always open."
+          eyebrow="Contact Me"
+          // title="Let's build something"
+          // highlight="together"
+          // description="Have an app idea, a role or just a question? My inbox is always open."
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">

@@ -25,8 +25,15 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 1.5rem;
+    /* Keep section targets clear of the sticky header. */
+    scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 6.5rem;
+    }
   }
 
   body {

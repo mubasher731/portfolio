@@ -16,9 +16,9 @@ const Skills = () => (
     <div className="container-x">
       <SectionHeading
         eyebrow="Skills"
-        title="My mobile"
-        highlight="toolkit"
-        description="The languages, frameworks and platforms I use to design, build and ship applications."
+        // title="My mobile"
+        // highlight="toolkit"
+        // description="The languages, frameworks and platforms I use to design, build and ship applications."
       />
 
       {/* One simple block per group. Every technology sits in an equal-size

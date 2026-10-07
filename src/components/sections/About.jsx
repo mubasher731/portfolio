@@ -9,8 +9,6 @@ import {
 import { FaMobileAlt, FaLayerGroup, FaCloud, FaPaintBrush } from "react-icons/fa";
 import SectionHeading from "../ui/SectionHeading";
 import Card from "../ui/Card";
-import Button from "../ui/Button";
-import { Download } from "lucide-react";
 import { profile, services } from "../../data/portfolio";
 
 const serviceIcons = {
@@ -42,71 +40,22 @@ const About = () => {
           eyebrow="About Me"
           title="A developer who sweats"
           highlight="the details"
-          description="Beyond the code — how I think, what I care about, and how I like to build mobile products."
+          description="Beyond the code how I think, what I care about, and how I like to build mobile products."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           {/* Narrative + quick facts */}
-          <div>
-            <div className="space-y-4">
+          <div className="flex h-full flex-col justify-center">
+            <div className="flex flex-col gap-6">
               {profile.about.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 32)}
-                  className="text-[15px] leading-relaxed text-slate-400"
+                  className="text-justify text-[18px] leading-relaxed text-slate-400"
                 >
                   {paragraph}
                 </p>
               ))}
             </div>
-
-            <div className="mt-9 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2">
-              {facts.map((fact) => {
-                const Icon = fact.icon;
-                const body = (
-                  <>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary-light">
-                      <Icon size={16} />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-slate-500">
-                        {fact.label}
-                      </span>
-                      <span className="block truncate text-sm font-semibold text-white">
-                        {fact.value}
-                      </span>
-                    </span>
-                  </>
-                );
-
-                return fact.href ? (
-                  <a
-                    key={fact.label}
-                    href={fact.href}
-                    className="flex items-center gap-3 bg-ink-950/70 px-4 py-4 transition-colors hover:bg-ink-900/70"
-                  >
-                    {body}
-                  </a>
-                ) : (
-                  <div
-                    key={fact.label}
-                    className="flex items-center gap-3 bg-ink-950/70 px-4 py-4"
-                  >
-                    {body}
-                  </div>
-                );
-              })}
-            </div>
-
-            <Button
-              href={profile.resumeUrl}
-              download
-              variant="outline"
-              size="md"
-              icon={Download}
-              className="mt-8"
-            >
-              View full resume
-            </Button>
           </div>
 
           {/* What I do */}

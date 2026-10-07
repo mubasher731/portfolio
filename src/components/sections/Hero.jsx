@@ -21,10 +21,10 @@ const Hero = () => {
           {/* ---------------------------------------------------------------- */}
           <div className="text-center lg:text-left">
             {/* Availability */}
-            <Badge tone="emerald" className="gap-2 px-3.5 py-1.5 text-[11.5px]">
+            {/* <Badge tone="emerald" className="gap-2 px-3.5 py-1.5 text-[11.5px]">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
               {profile.availability}
-            </Badge>
+            </Badge> */}
 
             <p className="mt-7 flex items-center justify-center gap-2 text-sm font-medium text-slate-400 lg:justify-start">
               <Sparkles size={14} className="text-primary" />
@@ -61,7 +61,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-3 lg:justify-start">
+            {/* <div className="mt-8 flex items-center justify-center gap-3 lg:justify-start">
               {socials.map((social) => {
                 const Icon = socialIcons[social.icon] ?? Mail;
                 return (
@@ -77,19 +77,19 @@ const Hero = () => {
                   </a>
                 );
               })}
-            </div>
+            </div> */}
           </div>
 
           {/* ---------------------------------------------------------------- */}
           {/* Portrait                                                         */}
           {/* ---------------------------------------------------------------- */}
-          <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:mx-0 lg:ml-auto">
-            <div className="absolute -inset-6 rounded-[2.5rem] bg-linear-to-tr from-primary/25 via-accent/15 to-transparent blur-3xl" />
-            <div className="relative rounded-[2rem] bg-linear-to-tr from-primary via-primary-light to-accent p-[3px] shadow-2xl shadow-primary/20">
+          <div className="relative mx-auto aspect-square w-full max-w-[15rem] sm:max-w-[18rem] lg:mx-0 lg:ml-auto lg:max-w-[21rem]">
+            <div className="absolute -inset-6 rounded-full bg-linear-to-tr from-primary/25 via-accent/15 to-transparent blur-3xl" />
+            <div className="relative h-full w-full rounded-full bg-linear-to-tr from-primary via-primary-light to-accent p-[3px] shadow-2xl shadow-primary/20">
               <img
                 src={assets.profile}
                 alt={`Portrait of ${profile.name}`}
-                className="h-[20rem] w-full rounded-[1.9rem] object-cover object-top sm:h-[24rem]"
+                className="h-full w-full rounded-full object-cover object-center"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ const Hero = () => {
         {/* ------------------------------------------------------------------ */}
         {/* Stats                                                              */}
         {/* ------------------------------------------------------------------ */}
-        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:mt-20 sm:grid-cols-4">
+        {/* <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:mt-20 sm:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
@@ -113,7 +113,7 @@ const Hero = () => {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

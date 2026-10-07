@@ -6,12 +6,11 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 /* Sections */
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
-import Skills from "./components/sections/Skills";
-import Experience from "./components/sections/Experience";
-import Projects from "./components/sections/Projects";
-import Publications from "./components/sections/Publications";
-import Achievements from "./components/sections/Achievements";
 import Education from "./components/sections/Education";
+import Publications from "./components/sections/Publications";
+import Experience from "./components/sections/Experience";
+import Skills from "./components/sections/Skills";
+import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 
 const App = () => {
@@ -34,12 +33,11 @@ const App = () => {
       <main>
         <Hero />
         <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Publications />
-        <Achievements />
         <Education />
+        <Publications />
+        <Experience />
+        <Skills />
+        <Projects />
         <Contact />
       </main>
 

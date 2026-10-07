@@ -7,10 +7,10 @@ const Experience = () => (
   <section id="experience" className="relative py-20 md:py-28">
     <div className="container-x">
       <SectionHeading
-        eyebrow="Experience"
-        title="Where I've"
-        highlight="worked"
-        description="A short history of the teams and mobile products I've contributed to."
+        eyebrow="Work Experience"
+        // title="Work"
+        // highlight="Experience"
+        // description="A short history of the teams and mobile products I've contributed to."
       />
 
       <div className="relative mt-14">

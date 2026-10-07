@@ -11,7 +11,6 @@
 
 import profileImg from "../assets/images/profile.jpeg";
 import certificateImg from "../assets/images/certificate.png";
-import trophyImg from "../assets/images/trophy.png";
 
 /* -------------------------------------------------------------------------- */
 /*  Assets                                                                     */
@@ -20,7 +19,6 @@ import trophyImg from "../assets/images/trophy.png";
 export const assets = {
   profile: profileImg,
   certificate: certificateImg,
-  trophy: trophyImg,
 };
 
 /* -------------------------------------------------------------------------- */
@@ -39,17 +37,18 @@ export const profile = {
   availability: "Available for work",
 
   // TODO: replace with your real contact details
-  email: "mubasher.manzoor@gmail.com",
-  phone: "+92 300 0000000",
+  email: "mubasher.manzoor596@gmail.com",
+  phone: "+92 301 9444731",
   location: "Lahore, Pakistan",
 
   // Put your PDF at: public/resume.pdf
   resumeUrl: "/resume.pdf",
 
   about: [
-    "I'm a Mobile Application Developer who cares about the whole journey — from the first wireframe to a release on the Play Store and App Store. I like building apps that feel fast, look clean and stay reliable on low-end devices.",
-    "My core stack is Flutter and Dart for cross-platform work, with React Native and native Android and iOS experience alongside it. On the backend I'm comfortable with Firebase, Node.js and both SQL and NoSQL databases.",
-    "I also have hands-on research experience in applied machine learning, having co-authored a peer-reviewed paper on interpretable ECG heartbeat classification — which shapes how I think about on-device intelligence and data-driven features.",
+    // "I'm a Mobile Application Developer who cares about the whole journey from the first wireframe to a release on the Play Store and App Store. I like building apps that feel fast, look clean and stay reliable on low-end devices.",
+    // "My core stack is Flutter and Dart for cross-platform work, with React Native and native Android and iOS experience alongside it. On the backend I'm comfortable with Firebase, Node.js and both SQL and NoSQL databases.",
+    // "I also have hands on research experience in applied machine learning, having co-authored a peer-reviewed paper on interpretable ECG heartbeat classification, which shapes how I think about on device intelligence and data driven features.",
+    "Computer Science graduate and React Native Developer with 2+ years of experience in mobile application development. Skilled in building responsive, production-focused applications using React Native, TypeScript, JavaScript, Redux Toolkit, REST APIs, GraphQL, and real-time communication technologies. Experienced in healthcare, professional networking, marketplace, and fitness applications, with hands-on expertise in WebRTC, Socket.IO, Node.js, PostgreSQL, Firebase, and authentication systems. Published research work in ECG arrhythmia classification using self-supervised learning and explainable AI techniques. Strong focus on clean UI, performance optimization, scalable architecture, and delivering reliable cross-platform mobile experiences.",
   ],
 };
 
@@ -60,24 +59,22 @@ export const profile = {
 export const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Research", href: "#publications" },
-  { name: "Achievements", href: "#achievements" },
   { name: "Education", href: "#education" },
+  { name: "Research", href: "#publications" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
 ];
 
 /** Section ids watched by the scroll spy (each must exist in the DOM). */
 export const sectionIds = [
   "home",
   "about",
-  "skills",
-  "experience",
-  "projects",
-  "publications",
-  "achievements",
   "education",
+  "publications",
+  "experience",
+  "skills",
+  "projects",
   "contact",
 ];
 
@@ -88,11 +85,10 @@ export const sectionIds = [
 export const primaryNav = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Education", href: "#education" },
+  { name: "Research", href: "#publications" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Research", href: "#publications" },
-  { name: "Achievements", href: "#achievements" },
-  { name: "Education", href: "#education" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -132,27 +128,24 @@ export const skillGroups = [
       { name: "Flutter", icon: "Flutter", level: 92 },
       { name: "Dart", icon: "Dart", level: 90 },
       { name: "React Native", icon: "ReactNative", level: 85 },
-      { name: "Kotlin", icon: "Kotlin", level: 78 },
-      { name: "Swift", icon: "Swift", level: 72 },
-      { name: "Jetpack Compose", icon: "JetpackCompose", level: 75 },
       { name: "React.js", icon: "React", level: 85 },
-      { name: "Android Studio", icon: "AndroidStudio", level: 88 },
     ],
   },
   {
     id: "backend",
-    title: "Backend & Data",
+    title: "State Management",
     description: "APIs, databases and the services that power the app.",
     icon: "server",
     skills: [
       { name: "Firebase", icon: "Firebase", level: 88 },
-      { name: "REST APIs", icon: "RestApi", level: 88 },
+      { name: "REST APIs & Asyc Operations", icon: "RestApi & Asyc Operations", level: 88 },
       { name: "Node.js", icon: "NodeJs", level: 78 },
-      { name: "Express.js", icon: "Express", level: 76 },
       { name: "MongoDB", icon: "MongoDB", level: 78 },
       { name: "MySQL", icon: "MySQL", level: 75 },
-      { name: "SQLite / Room", icon: "SQLite", level: 82 },
       { name: "Supabase", icon: "Supabase", level: 72 },
+      { name: "Redux Toolkit", icon: "ReduxToolkit", level: 72 },
+      { name: "Supabase", icon: "Supabase", level: 72 },
+      { name: "WebRTC", icon: "WebRTC", level: 72 },
     ],
   },
   {
@@ -173,7 +166,7 @@ export const skillGroups = [
   },
   {
     id: "tooling",
-    title: "Tools & Workflow",
+    title: "Tools & Technologies",
     description: "Shipping, versioning and everything in between.",
     icon: "wrench",
     skills: [
@@ -183,8 +176,6 @@ export const skillGroups = [
       { name: "VS Code", icon: "VSCode", level: 92 },
       { name: "Figma", icon: "Figma", level: 80 },
       { name: "Postman", icon: "Postman", level: 88 },
-      { name: "Play Console", icon: "PlayStore", level: 78 },
-      { name: "App Store Connect", icon: "AppStore", level: 70 },
     ],
   },
 ];
@@ -229,26 +220,57 @@ export const experience = [
   {
     id: 1,
     role: "Mobile Application Developer",
-    company: "Company Name",
+    company: "Wateen Telecom",
     type: "Full-time",
     location: "Lahore, Pakistan",
-    duration: "2024 — Present",
+    duration: "July 2026 — Present",
     points: [
-      "Developed and shipped cross-platform mobile applications with Flutter and Dart.",
-      "Integrated REST APIs and Firebase services including authentication and push notifications.",
-      "Reduced app cold-start time and improved frame stability on low-end Android devices.",
+      "Develop and maintain responsive cross-platform mobile application features using React Native.",
+      "Build reusable UI components and responsive screens while following established application design patterns.",
+      "Integrate REST APIs and handle asynchronous data operations for mobile application workflows.",
+      "Implement and manage application state using modern React Native state management practices.",
+      "Optimize mobile application performance, navigation, loading behavior, and overall user experience.",
+      "Collaborate with development and design teams using Git & GitHub to deliver and maintain application"
     ],
   },
   {
     id: 2,
-    role: "Mobile Development Intern",
-    company: "Company Name",
-    type: "Internship",
+    role: "Junior Mobile Application Developer",
+    company: "Cipher Developers",
+    type: "Full Time",
     location: "Lahore, Pakistan",
-    duration: "2023 — 2024",
+    duration: "Jan 2026 — Apr 2026",
     points: [
-      "Built reusable UI components and worked on existing Flutter and React Native codebases.",
-      "Participated in code reviews, sprint planning and QA cycles before releases.",
+      "Built \"Dentment\" a LinkedIn-clone mobile app with authentication, dynamic feed, and connection network.",
+      "Implemented multi-type posts (Polls, Case Studies, Image/Video, Celebrations) with real-time engagement.",
+      "Integrated NestJS GraphQL APIs using Apollo Client for data fetching, caching, and state management.",
+      "Developed mentor booking system with session requests, accept/reject functionality, and push notifications.",
+      "Styled responsive UI using NativeWind (Tailwind CSS) for pixel-perfect cross-device alignment.",
+      "Optimized performance via memorization and lazy loading, reducing screen load times.",
+      "Collaborated with content teams to edit and produce internal training videos and product demo clips, ensuring visual consistency and timely delivery.",
+      "Used Figma to design storyboards and motion graphics concepts for video projects.",
+      "Managed version control and collaboration using Git & GitHub.",
+    ],
+  },
+  {
+    id: 3,
+    role: "Mobile Application Developer",
+    company: "AppsHipe",
+    type: "Internship + Full Time",
+    location: "Lahore, Pakistan",
+    duration: "Nov 2024 — Dec 2025",
+    points: [
+      "Implemented Firebase authentication, Firestore, and real-time features.",
+      "Built modular UI screens with responsive layouts.",
+      "Used Redux Toolkit for state management.",
+      "Integrated real-time tracking and maps-based features.",
+      "Optimized performance & improved loading time.",
+      "Collaborated via Git & GitHub for version control.",
+      "Integrated REST APIs and handled async operations.",
+      "Produced and edited short promotional videos and UI walkthroughs using Adobe",
+      "Premiere Pro and Canva for client presentations.",
+      "Applied color correction, transitions, and sound mixing to enhance video quality and",
+      "brand alignment.",
     ],
   },
 ];
@@ -261,55 +283,91 @@ export const experience = [
 export const projects = [
   {
     id: 1,
-    title: "RhythmX — Heartbeat Classification",
-    subtitle: "Research-backed health platform",
+    title: "ConnectApp ",
+    subtitle: "Healthcare Communication Platform",
     description:
-      "An interpretable self-supervised contrastive learning framework for ECG heartbeat classification, published in MDPI Technologies. Contributed to model evaluation and the data pipeline behind it.",
-    tech: ["Python", "TensorFlow", "Scikit-learn", "Signal Processing"],
-    category: "AI & Health",
-    icon: "ScikitLearn",
+      "A role-based healthcare communication platform for Patients and Doctors. Features appointment booking, doctor consultation management, real-time chat, call history, Socket.IO messaging, WebRTC audio/video calls, JWT authentication and push notifications, backed by a Node.js/Express + PostgreSQL backend.",
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Socket.IO",
+      "WebRTC",
+      "JWT",
+    ],
+    category: "Android & iOS",
+    icon: "ReactNative",
     live: "",
     source: "#",
-    featured: true,
+    //featured: true,
   },
   {
     id: 2,
-    title: "Cross-Platform Delivery App",
-    subtitle: "Flutter + Firebase",
+    title: "Dentment ",
+    subtitle: "LinkedIn Clone App",
     description:
-      "A food delivery app with live order tracking, push notifications, in-app payments and an offline-first cart that syncs once connectivity returns.",
-    tech: ["Flutter", "Dart", "Firebase", "Google Maps"],
-    category: "Mobile App",
-    icon: "Flutter",
-    live: "#",
+      "A LinkedIn-style mobile app with user profiles, feed, and connection network. Engineered 5 post types (Text, Image/Video, Poll, Case Study, Celebration) with real-time voting, a mentor booking module with listings, calendar, requests and accept/reject workflow, plus GraphQL APIs with optimistic UI updates and secure authentication.",
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Apollo Client",
+      "GraphQL",
+      "NestJS",
+      "NativeWind",
+    ],
+    category: "Android & iOS",
+    icon: "ReactNative",
+    live: "",
     source: "#",
-    featured: true,
+    //featured: true,
   },
   {
     id: 3,
-    title: "Fitness Tracker",
-    subtitle: "Native Android",
+    title: "LCI-LMS Portal",
+    subtitle: "UI/UX Design + Mobile App",
     description:
-      "A Kotlin app that records workouts, visualises progress with Compose charts and stores health data locally through Room.",
-    tech: ["Kotlin", "Jetpack Compose", "Room", "Material 3"],
-    category: "Android",
-    icon: "Android",
-    live: "#",
+      "Designed the complete end-to-end UI/UX of the client's LMS portal mobile app, covering every screen with no section left incomplete. Delivered a modern, fully responsive layout, an interactive login screen with hidden password toggle, and a polished design system including typography, spacing, components and color themes.",
+    tech: ["UI/UX", "Figma", "Design System", "Responsive Design"],
+    category: "Android & iOS",
+    icon: "Expo",
+    live: "",
     source: "#",
-    featured: false,
+    //featured: false,
   },
   {
     id: 4,
-    title: "Expense Manager",
-    subtitle: "React Native",
+    title: "MarketPlacer App",
+    subtitle: "Clone App like OLX, PakWheels",
     description:
-      "A budgeting app with biometric login, category insights, recurring reminders and cloud backup across devices.",
-    tech: ["React Native", "TypeScript", "Redux", "Node.js"],
-    category: "Cross-Platform",
+      "A marketplace app for buying and selling with Firebase Email/Password authentication, ad posting and saving through Firebase, push notifications via token ID, real-time chat using Firebase, and mobile contact handling through Redux.",
+    tech: ["Firebase", "Redux", "Push Notifications"],
+    category: "Android",
     icon: "ReactNative",
-    live: "#",
+    live: "",
     source: "#",
-    featured: false,
+    //featured: false,
+  },
+  {
+    id: 5,
+    title: "Diabetic Foot Ulcer Prediction & Recommendation Tool",
+    subtitle: "AI Based Final Year Project",
+    description:
+      "A Python-based AI model that analyses and classifies diabetic foot ulcer images using deep learning. Pre-processed the dataset with normalization, resizing and data augmentation, applied SMOTE for class balancing, and used EfficientNetB0 for classification and feature extraction to achieve high accuracy. Deployed the model in a Flutter-based mobile application to assist healthcare providerswith real-time detection",
+    tech: [
+      "Python",
+      "Deep Learning",
+      "EfficientNetB0",
+      "SMOTE",
+      "Flask",
+      "Flutter",
+    ],
+    category: "Android",
+    icon: "Python",
+    live: "",
+    source: "#",
+    //featured: true,
   },
 ];
 
@@ -357,39 +415,6 @@ export const publications = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  Achievements                                                               */
-/* -------------------------------------------------------------------------- */
-
-export const achievements = [
-  {
-    id: 1,
-    title: "MDPI Publication — Technologies Journal",
-    year: "2026",
-    description:
-      "Co-authored a peer-reviewed article in an open-access journal with an Impact Factor of 5.2 and a CiteScore of 6.7. DOI: 10.3390/technologies14030148.",
-    icon: "award",
-    image: certificateImg,
-    imageAlt: "MDPI certificate of publication for the RhythmX article",
-    imageFit: "contain",
-    tag: "Research",
-    accent: "primary",
-  },
-  {
-    id: 2,
-    title: "E-Learning Quiz Winner — Punjab Group of Colleges",
-    year: "2019 – 2020",
-    description:
-      "Awarded a trophy for outstanding performance in the inter-college E-Learning Quiz held at Punjab Colleges, Lahore.",
-    icon: "trophy",
-    image: trophyImg,
-    imageAlt: "E-Learning Quiz trophy from Punjab Colleges Lahore",
-    imageFit: "cover",
-    tag: "Competition",
-    accent: "amber",
-  },
-];
-
-/* -------------------------------------------------------------------------- */
 /*  Education                                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -397,25 +422,15 @@ export const education = [
   {
     id: 1,
     degree: "Bachelor of Science in Computer Science",
-    institution: "Bahria University",
+    institution: "Bahria University Lahore",
     location: "Lahore, Pakistan",
     duration: "Spring 2021 — Fall 2024",
-    description:
-      "Studied software engineering, data structures and algorithms, mobile application development and machine learning. Final year work contributed to a peer-reviewed journal publication.",
-    highlights: [
-      "Mobile Application Development",
-      "Data Structures & Algorithms",
-      "Machine Learning",
-    ],
   },
   {
     id: 2,
-    degree: "Intermediate — Computer Science",
+    degree: "Intermediate in Computer Science",
     institution: "Punjab Group of Colleges",
     location: "Lahore, Pakistan",
-    duration: "2019 — 2021",
-    description:
-      "Completed intermediate studies with a strong foundation in mathematics and computing, and won the college E-Learning Quiz.",
-    highlights: ["E-Learning Quiz Winner", "Mathematics", "Computer Studies"],
+    duration: "2018 — 2020",
   },
 ];

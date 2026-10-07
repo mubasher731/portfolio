@@ -25,9 +25,6 @@ const Projects = () => (
     <div className="container-x">
       <SectionHeading
         eyebrow="Projects"
-        title="Apps I've"
-        highlight="built"
-        description="A selection of mobile applications, research work and cross-platform builds."
       />
 
       <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -64,7 +61,7 @@ const Projects = () => (
                 </p>
               ) : null}
 
-              <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-slate-400">
+              <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-slate-400 text-justify">
                 {project.description}
               </p>
 

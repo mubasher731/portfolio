@@ -8,9 +8,9 @@ const Education = () => (
     <div className="container-x">
       <SectionHeading
         eyebrow="Education"
-        title="My academic"
-        highlight="journey"
-        description="The foundation behind the code — degrees, institutions and the subjects I enjoyed most."
+        // title="My academic"
+        // highlight="journey"
+        // description="The foundation behind the code — degrees, institutions and the subjects I enjoyed most."
       />
 
       <div className="relative mt-14">

@@ -48,10 +48,10 @@ const Publications = () => {
     <section id="publications" className="relative py-20 md:py-28">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Research"
-          title="Peer-reviewed"
-          highlight="publication"
-          description="A journal article I co-authored on interpretable machine learning for cardiac signal analysis."
+          eyebrow="Research Paper Publication"
+          // title="Peer-reviewed"
+          // highlight="publication"
+          // description="A journal article I co-authored on interpretable machine learning for cardiac signal analysis."
         />
 
         <Card gradient hover={false} className="mt-14 overflow-hidden">
