@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 import {
   BookOpen,
   Award,
@@ -8,17 +8,32 @@ import {
   Check,
   ExternalLink,
   Star,
+  ShieldAlert,
 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import Card from "../ui/Card";
 import Badge from "../ui/Badge";
 import Lightbox from "../ui/Lightbox";
-import { publications } from "../../data/portfolio";
+import Watermark from "../ui/Watermark";
+import useContentProtection from "../../hooks/useContentProtection";
+import { publications, profile } from "../../data/portfolio";
+
+const COPY_NOTICE = "Screenshots of this certificate aren't permitted.";
 
 const Publications = () => {
   const [preview, setPreview] = useState(false);
   const [copied, setCopied] = useState(false);
   const paper = publications[0];
+
+  // The certificate is view-only: the guard is armed while it is on screen or
+  // while the full-screen preview is open. See useContentProtection for what
+  // this can and cannot do.
+  const certificateRef = useRef(null);
+  const { notice, guardProps } = useContentProtection({
+    targetRef: certificateRef,
+    active: preview,
+    message: COPY_NOTICE,
+  });
 
   const copyCitation = async () => {
     try {
@@ -71,18 +86,26 @@ const Publications = () => {
           </div>
 
           <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-            {/* Certificate preview */}
             <button
               type="button"
+              ref={certificateRef}
               onClick={() => setPreview(true)}
-              className="group relative flex items-center justify-center border-b border-white/10 bg-ink-900/50 p-7 lg:border-b-0 lg:border-r"
+              {...guardProps}
+              className="group print-hidden relative flex select-none items-center justify-center border-b border-white/10 bg-ink-900/50 p-7 lg:border-b-0 lg:border-r"
               aria-label="Open the certificate of publication"
             >
-              <img
-                src={paper.certificate}
-                alt="MDPI certificate of publication"
-                className="w-full rounded-xl border border-white/10 shadow-2xl shadow-black/50"
-              />
+              <span className="relative block w-full">
+                <img
+                  src={paper.certificate}
+                  alt="MDPI certificate of publication"
+                  draggable={false}
+                  className="pointer-events-none w-full rounded-xl border border-white/10 shadow-2xl shadow-black/50"
+                />
+                <Watermark
+                  text={profile.name}
+                  className="rounded-xl text-white/40"
+                />
+              </span>
               <span className="absolute inset-0 grid place-items-center bg-ink-950/55 opacity-0 backdrop-blur-[2px] transition group-hover:opacity-100">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-ink-950/80 px-4 py-2 text-sm font-semibold text-white">
                   <Eye size={16} />
@@ -184,7 +207,7 @@ const Publications = () => {
                     href={paper.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-primary to-primary-light px-5 py-2.5 text-[13px] font-bold text-ink-950 transition hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-primary to-primary-light px-5 py-2.5 text-[13px] font-bold text-on-primary transition hover:-translate-y-0.5"
                   >
                     Read article
                     <ExternalLink size={15} />
@@ -217,7 +240,20 @@ const Publications = () => {
         alt={`Certificate of publication for ${paper.title}`}
         caption={`Certificate of publication — ${paper.journal} (${paper.publisher}), ${paper.year}`}
         onClose={() => setPreview(false)}
+        guarded
+        watermark={profile.name}
+        guardProps={guardProps}
       />
+
+      {notice ? (
+        <div
+          role="status"
+          className="print-hidden fixed bottom-6 left-1/2 z-[110] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-ink-900/95 px-4 py-2.5 text-[13px] font-semibold text-white shadow-2xl shadow-black/50 backdrop-blur-xl"
+        >
+          <ShieldAlert size={15} className="text-primary-light" />
+          {notice}
+        </div>
+      ) : null}
     </section>
   );
 };

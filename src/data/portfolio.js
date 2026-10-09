@@ -11,6 +11,7 @@
 
 import profileImg from "../assets/images/profile.jpeg";
 import certificateImg from "../assets/images/certificate.png";
+import resumePdf from "../assets/images/Mubasher_resume.pdf";
 
 /* -------------------------------------------------------------------------- */
 /*  Assets                                                                     */
@@ -28,26 +29,20 @@ export const assets = {
 export const profile = {
   name: "Mubasher Manzoor",
   firstName: "Mubasher",
-  initials: "MM",
   role: "Mobile Application Developer",
   tagline: "Mobile Application Developer & AI/ML Enthusiast",
-  headline: "I design and build mobile apps people actually enjoy using.",
   heroText:
     "A Computer Science graduate specialising in cross-platform mobile development. I build performant Android and iOS apps with Flutter and React Native, backed by a peer-reviewed research background in applied machine learning.",
-  availability: "Available for work",
 
   // TODO: replace with your real contact details
   email: "mubasher.manzoor596@gmail.com",
   phone: "+92 301 9444731",
   location: "Lahore, Pakistan",
 
-  // Put your PDF at: public/resume.pdf
-  resumeUrl: "/resume.pdf",
+  resumeUrl: resumePdf,
+  resumeFileName: "Mubasher_Manzoor_Resume.pdf",
 
   about: [
-    // "I'm a Mobile Application Developer who cares about the whole journey from the first wireframe to a release on the Play Store and App Store. I like building apps that feel fast, look clean and stay reliable on low-end devices.",
-    // "My core stack is Flutter and Dart for cross-platform work, with React Native and native Android and iOS experience alongside it. On the backend I'm comfortable with Firebase, Node.js and both SQL and NoSQL databases.",
-    // "I also have hands on research experience in applied machine learning, having co-authored a peer-reviewed paper on interpretable ECG heartbeat classification, which shapes how I think about on device intelligence and data driven features.",
     "Computer Science graduate and React Native Developer with 2+ years of experience in mobile application development. Skilled in building responsive, production-focused applications using React Native, TypeScript, JavaScript, Redux Toolkit, REST APIs, GraphQL, and real-time communication technologies. Experienced in healthcare, professional networking, marketplace, and fitness applications, with hands-on expertise in WebRTC, Socket.IO, Node.js, PostgreSQL, Firebase, and authentication systems. Published research work in ECG arrhythmia classification using self-supervised learning and explainable AI techniques. Strong focus on clean UI, performance optimization, scalable architecture, and delivering reliable cross-platform mobile experiences.",
   ],
 };
@@ -92,28 +87,6 @@ export const primaryNav = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  Social links                                                               */
-/* -------------------------------------------------------------------------- */
-
-// TODO: replace the "#" placeholders with your real profile URLs
-// export const socials = [
-//   { name: "GitHub", icon: "github", url: "https://github.com/" },
-//   { name: "LinkedIn", icon: "linkedin", url: "https://linkedin.com/in/" },
-//   { name: "Email", icon: "mail", url: "mailto:mubasher.manzoor@gmail.com" },
-// ];
-
-/* -------------------------------------------------------------------------- */
-/*  Hero statistics                                                            */
-/* -------------------------------------------------------------------------- */
-
-export const stats = [
-  { value: "5.2", suffix: "", label: "Journal Impact Factor" },
-  { value: "1", suffix: "", label: "Peer-Reviewed Paper" },
-  { value: "2", suffix: "", label: "Platforms — Android & iOS" },
-  { value: "2024", suffix: "", label: "CS Graduate" },
-];
-
-/* -------------------------------------------------------------------------- */
 /*  Skills                                                                     */
 /* -------------------------------------------------------------------------- */
 
@@ -125,10 +98,10 @@ export const skillGroups = [
     description: "Building cross-platform and native apps for Android and iOS.",
     icon: "smartphone",
     skills: [
-      { name: "Flutter", icon: "Flutter", level: 92 },
-      { name: "Dart", icon: "Dart", level: 90 },
-      { name: "React Native", icon: "ReactNative", level: 85 },
-      { name: "React.js", icon: "React", level: 85 },
+      { name: "Flutter", icon: "Flutter" },
+      { name: "Dart", icon: "Dart" },
+      { name: "React Native", icon: "ReactNative" },
+      { name: "React.js", icon: "React" },
     ],
   },
   {
@@ -137,14 +110,14 @@ export const skillGroups = [
     description: "APIs, databases and the services that power the app.",
     icon: "server",
     skills: [
-      { name: "Firebase", icon: "Firebase", level: 88 },
-      { name: "REST APIs & Async Operations", icon: "RestApi", level: 88 },
-      { name: "Node.js", icon: "NodeJs", level: 78 },
-      { name: "MongoDB", icon: "MongoDB", level: 78 },
-      { name: "MySQL", icon: "MySQL", level: 75 },
-      { name: "Supabase", icon: "Supabase", level: 72 },
-      { name: "Redux Toolkit", icon: "ReduxToolkit", level: 72 },
-      { name: "WebRTC", icon: "WebRTC", level: 72 },
+      { name: "Firebase", icon: "Firebase" },
+      { name: "REST APIs & Async Operations", icon: "RestApi" },
+      { name: "Node.js", icon: "NodeJs" },
+      { name: "MongoDB", icon: "MongoDB" },
+      { name: "MySQL", icon: "MySQL" },
+      { name: "Supabase", icon: "Supabase" },
+      { name: "Redux Toolkit", icon: "ReduxToolkit" },
+      { name: "WebRTC", icon: "WebRTC" },
     ],
   },
   {
@@ -153,14 +126,14 @@ export const skillGroups = [
     description: "On-device intelligence and data-driven research.",
     icon: "brain",
     skills: [
-      { name: "Python", icon: "Python", level: 85 },
-      { name: "Scikit-learn", icon: "ScikitLearn", level: 82 },
-      { name: "TensorFlow", icon: "TensorFlow", level: 75 },
-      { name: "Keras", icon: "Keras", level: 75 },
-      { name: "NumPy", icon: "NumPy", level: 85 },
-      { name: "Pandas", icon: "Pandas", level: 85 },
-      { name: "OpenCV", icon: "OpenCV", level: 72 },
-      { name: "Jupyter", icon: "Jupyter", level: 88 },
+      { name: "Python", icon: "Python" },
+      { name: "Scikit-learn", icon: "ScikitLearn" },
+      { name: "TensorFlow", icon: "TensorFlow" },
+      { name: "Keras", icon: "Keras" },
+      { name: "NumPy", icon: "NumPy" },
+      { name: "Pandas", icon: "Pandas" },
+      { name: "OpenCV", icon: "OpenCV" },
+      { name: "Jupyter", icon: "Jupyter" },
     ],
   },
   {
@@ -169,12 +142,12 @@ export const skillGroups = [
     description: "Shipping, versioning and everything in between.",
     icon: "wrench",
     skills: [
-      { name: "Git & GitHub", icon: "Git", level: 90 },
-      { name: "Android Studio", icon: "AndroidStudio", level: 88 },
-      { name: "Xcode", icon: "Xcode", level: 70 },
-      { name: "VS Code", icon: "VSCode", level: 92 },
-      { name: "Figma", icon: "Figma", level: 80 },
-      { name: "Postman", icon: "Postman", level: 88 },
+      { name: "Git & GitHub", icon: "Git" },
+      { name: "Android Studio", icon: "AndroidStudio" },
+      { name: "Xcode", icon: "Xcode" },
+      { name: "VS Code", icon: "VSCode" },
+      { name: "Figma", icon: "Figma" },
+      { name: "Postman", icon: "Postman" },
     ],
   },
 ];

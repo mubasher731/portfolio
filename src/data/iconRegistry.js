@@ -145,9 +145,3 @@ export const techColors = {
   Postman: "#FF6C37",
   Docker: "#2496ED",
 };
-
-/** Safe lookup with a sensible fallback icon. */
-export const getTechIcon = (name) => techIcons[name] ?? Globe;
-
-/** Safe lookup for a brand colour. */
-export const getTechColor = (name) => techColors[name] ?? "#45DCFF";

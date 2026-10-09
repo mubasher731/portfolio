@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Download, Mail } from "lucide-react";
 import Button from "../ui/Button";
+import ThemeSwitcher from "./ThemeSwitcher";
 import useActiveSection from "../../hooks/useActiveSection";
 import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 import useEscapeKey from "../../hooks/useEscapeKey";
@@ -26,7 +27,7 @@ const Navbar = () => {
       {/* Sticky header.
           It stays pinned to the top of the viewport while the page scrolls,
           so navigation is always reachable. */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-ink-950/85 shadow-[0_18px_50px_-30px_rgba(6,162,194,0.9)] backdrop-blur-xl">
+      <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-ink-950/85 shadow-[0_18px_50px_-30px_var(--color-primary)] backdrop-blur-xl">
         {/* Accent hairline along the bottom edge of the bar */}
         <span
           aria-hidden="true"
@@ -87,26 +88,31 @@ const Navbar = () => {
           {/* Actions                                                          */}
           {/* ---------------------------------------------------------------- */}
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
-            <Button
-              href={profile.resumeUrl}
-              download
-              variant="outline"
-              size="md"
-              icon={Download}
-              arrow={false}
-              className="hidden sm:inline-flex"
-            >
-              Resume
-            </Button>
+            <ThemeSwitcher />
 
-            <Button
-              onClick={() => go("#contact")}
-              size="md"
-              arrow={false}
-              className="hidden sm:inline-flex"
-            >
-              Hire Me
-            </Button>
+            {/* Wrapped rather than given `hidden` directly: Button's base class
+                sets `inline-flex`, which wins the cascade over a plain `hidden`
+                and left these visible (and the header overflowing) on phones. */}
+            <div className="hidden items-center gap-2 sm:flex">
+              <Button
+                href={profile.resumeUrl}
+                download={profile.resumeFileName}
+                variant="outline"
+                size="md"
+                icon={Download}
+                arrow={false}
+              >
+                Resume
+              </Button>
+
+              <Button
+                onClick={() => go("#contact")}
+                size="md"
+                arrow={false}
+              >
+                Hire Me
+              </Button>
+            </div>
 
             <button
               type="button"
@@ -155,7 +161,7 @@ const Navbar = () => {
             type="button"
             onClick={() => setOpen(false)}
             aria-label="Close navigation menu"
-            className="text-slate-300 transition hover:text-white"
+            className="-mr-2 grid h-11 w-11 place-items-center rounded-xl text-slate-300 transition hover:bg-white/5 hover:text-white"
           >
             <X size={22} />
           </button>
@@ -191,7 +197,7 @@ const Navbar = () => {
           </Button>
           <Button
             href={profile.resumeUrl}
-            download
+            download={profile.resumeFileName}
             variant="outline"
             size="md"
             icon={Download}

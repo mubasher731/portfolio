@@ -1,11 +1,3 @@
-import {
-  Mail,
-  MapPin,
-  GraduationCap,
-  CheckCircle2,
-  Target,
-  Users,
-} from "lucide-react";
 import { FaMobileAlt, FaLayerGroup, FaCloud, FaPaintBrush } from "react-icons/fa";
 import SectionHeading from "../ui/SectionHeading";
 import Card from "../ui/Card";
@@ -19,20 +11,6 @@ const serviceIcons = {
 };
 
 const About = () => {
-  const facts = [
-    { icon: Users, label: "Name", value: profile.name },
-    {
-      icon: Mail,
-      label: "Email",
-      value: profile.email,
-      href: `mailto:${profile.email}`,
-    },
-    { icon: MapPin, label: "Location", value: profile.location },
-    { icon: GraduationCap, label: "Degree", value: "BS Computer Science" },
-    { icon: Target, label: "Focus", value: profile.role },
-    { icon: CheckCircle2, label: "Status", value: profile.availability },
-  ];
-
   return (
     <section id="about" className="relative py-20 md:py-28">
       <div className="container-x">
@@ -44,7 +22,7 @@ const About = () => {
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-          {/* Narrative + quick facts */}
+          {/* Narrative */}
           <div className="flex h-full flex-col justify-center">
             <div className="flex flex-col gap-6">
               {profile.about.map((paragraph) => (

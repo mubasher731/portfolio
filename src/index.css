@@ -9,6 +9,13 @@
   --color-primary-dark: #067b94;
   --color-accent: #7c8cff;
 
+  /* Label colour for anything sitting on the primary gradient */
+  --color-on-primary: #04060f;
+
+  /* Label colour for third-party brand fills (GitHub blue, WhatsApp green …).
+     Deliberately never remapped by [data-theme]. */
+  --color-on-brand: #ffffff;
+
   --color-ink-950: #04060f;
   --color-ink-900: #070b1a;
   --color-ink-850: #0b1226;
@@ -20,6 +27,114 @@
 }
 
 /* ==========================================================================
+   Themes
+   --------------------------------------------------------------------------
+   The markup is authored dark-first, so instead of renaming ~330 utility
+   classes, the *meaning* of the ramps is remapped per theme:
+
+     --color-white      ink for text, hairlines and subtle fills
+     --color-slate-*    body / muted / faint copy
+     --color-ink-*      page, panel and inset surfaces
+
+   Everything resolves through plain CSS variables, so switching a theme is a
+   single attribute change on <html> with no re-render and no flash.
+   ========================================================================== */
+
+/* Defaults. Declared before [data-accent] so an attribute selector, which has
+   the same specificity, still wins the cascade for `--palette-*`. These mirror
+   the cyan palette exactly, so the untouched site renders as it always did. */
+:root {
+  --palette-primary: #06a2c2;
+  --palette-light: #45dcff;
+  --palette-dark: #067b94;
+  --palette-accent: #7c8cff;
+
+  --color-primary: var(--palette-primary);
+  --color-primary-light: var(--palette-light);
+  --color-primary-dark: var(--palette-dark);
+  --color-accent: var(--palette-accent);
+
+  /* Decorative surfaces — swapped by [data-theme] below. */
+  --grid-line: rgb(255 255 255 / 0.035);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-bg: rgb(255 255 255 / 0.035);
+  --ambient-opacity: 1;
+}
+
+/* Accent hues. Each palette declares its four dark-mode stops; light mode
+   re-derives the accent ramp from `--palette-primary` (see below). */
+[data-accent="cyan"] {
+  --palette-primary: #06a2c2;
+  --palette-light: #45dcff;
+  --palette-dark: #067b94;
+  --palette-accent: #7c8cff;
+}
+[data-accent="violet"] {
+  --palette-primary: #7c3aed;
+  --palette-light: #a78bfa;
+  --palette-dark: #6d28d9;
+  --palette-accent: #22d3ee;
+}
+[data-accent="emerald"] {
+  --palette-primary: #059669;
+  --palette-light: #34d399;
+  --palette-dark: #047857;
+  --palette-accent: #38bdf8;
+}
+[data-accent="amber"] {
+  --palette-primary: #d97706;
+  --palette-light: #fbbf24;
+  --palette-dark: #b45309;
+  --palette-accent: #ec4899;
+}
+[data-accent="rose"] {
+  --palette-primary: #e11d48;
+  --palette-light: #fb7185;
+  --palette-dark: #be123c;
+  --palette-accent: #a78bfa;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-ink-950: #f2f5fb;
+  --color-ink-900: #ffffff;
+  --color-ink-850: #eef2f9;
+  --color-ink-800: #e4eaf4;
+
+  /* The "white" ramp carries foreground ink in light mode. */
+  --color-white: #0d1526;
+  --color-slate-100: #101a2e;
+  --color-slate-200: #1e293b;
+  --color-slate-300: #35435c;
+  --color-slate-400: #55647d;
+  --color-slate-500: #63718a;
+
+  /* Accent ramp, shifted darker so it stays legible as text on a light page.
+     `primary-light` is the *deeper* stop here, which keeps the button
+     gradients readable under white labels. */
+  --color-primary: color-mix(in oklab, var(--palette-primary) 74%, #0a1420);
+  --color-primary-light: color-mix(
+    in oklab,
+    var(--palette-primary) 64%,
+    #0a1420
+  );
+  --color-primary-dark: color-mix(in oklab, var(--palette-primary) 54%, #0a1420);
+  --color-accent: color-mix(in oklab, var(--palette-accent) 58%, #0a1420);
+  --color-on-primary: #ffffff;
+
+  /* Status tones sit on near-white fills here, so they need real contrast. */
+  --color-emerald-300: #047857;
+  --color-emerald-400: #059669;
+  --color-amber-300: #b45309;
+
+  --grid-line: rgb(13 21 38 / 0.07);
+  --glass-border: rgb(13 21 38 / 0.1);
+  --glass-bg: rgb(255 255 255 / 0.86);
+  --ambient-opacity: 0.55;
+}
+
+/* ==========================================================================
    Base
    ========================================================================== */
 @layer base {
@@ -28,6 +143,7 @@
     /* Keep section targets clear of the sticky header. */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
+    color-scheme: dark;
   }
 
   @media (min-width: 640px) {
@@ -38,7 +154,7 @@
 
   body {
     background-color: var(--color-ink-950);
-    color: #cbd5e1;
+    color: var(--color-slate-300);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -62,12 +178,12 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #04060f;
+    background: var(--color-ink-950);
   }
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: color-mix(in oklab, var(--color-white) 22%, transparent);
     border-radius: 9999px;
-    border: 2px solid #04060f;
+    border: 2px solid var(--color-ink-950);
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-primary);
@@ -128,8 +244,8 @@
      is expensive on mobile GPUs and causes black-box compositing glitches.
      The blur is reserved for the navbar / drawer / lightbox only. */
   .glass {
-    border: 1px solid rgb(255 255 255 / 0.08);
-    background-color: rgb(255 255 255 / 0.035);
+    border: 1px solid var(--glass-border);
+    background-color: var(--glass-bg);
   }
 
   /* Gradient hairline border */
@@ -144,9 +260,9 @@
     padding: 1px;
     background: linear-gradient(
       140deg,
-      rgb(69 220 255 / 0.55),
-      rgb(255 255 255 / 0.06) 40%,
-      rgb(124 140 255 / 0.35)
+      color-mix(in oklab, var(--color-primary-light) 55%, transparent),
+      color-mix(in oklab, var(--color-white) 6%, transparent) 40%,
+      color-mix(in oklab, var(--color-accent) 35%, transparent)
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
@@ -159,8 +275,8 @@
   /* Faint blueprint grid used behind the whole page */
   .grid-bg {
     background-image:
-      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 58px 58px;
     mask-image: radial-gradient(
       ellipse 90% 60% at 50% 0%,
@@ -172,15 +288,6 @@
       #000 30%,
       transparent 100%
     );
-  }
-
-  /* Thin scrollbar for horizontally scrolling rails */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }
 
@@ -196,6 +303,18 @@
     background-color 0.3s ease;
 }
 .lift:hover {
-  border-color: rgb(6 162 194 / 0.45);
-  box-shadow: 0 18px 45px -20px rgb(6 162 194 / 0.55);
+  border-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
+  box-shadow: 0 18px 45px -20px
+    color-mix(in oklab, var(--color-primary) 55%, transparent);
+}
+
+/* ==========================================================================
+   Print
+   Protected media is withheld from the print/PDF output so the certificate
+   cannot be exported with Ctrl/Cmd+P.
+   ========================================================================== */
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
 }

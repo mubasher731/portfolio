@@ -17,44 +17,42 @@ const Skills = () => (
       <SectionHeading
         eyebrow="Skills"
       />
-
-      {/* Group cards flow into two balanced columns — uneven skill counts
-          never leave an empty gap inside a card. */}
+      
       <div className="mt-14 gap-5 md:columns-2 xl:gap-6">
         {skillGroups.map((group) => {
           const Icon = groupIcons[group.icon] ?? FaMobileAlt;
           return (
             <div
               key={group.id}
-              className="mb-5 flex break-inside-avoid flex-col rounded-2xl border border-white/10 bg-white/3 p-6 transition-colors hover:border-primary/25 xl:mb-6"
+              className="mb-5 flex break-inside-avoid flex-col rounded-2xl border border-white/10 bg-white/3 p-4 transition-colors hover:border-primary/25 sm:p-5 xl:mb-6"
             >
-              <div className="flex items-start gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10 bg-ink-900 text-primary-light">
-                  <Icon size={18} />
+              <div className="flex items-start gap-3">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-ink-900 text-primary-light">
+                  <Icon size={16} />
                 </span>
                 <div>
-                  <h3 className="font-display text-base font-bold text-white">
+                  <h3 className="font-display text-[15px] font-bold text-white">
                     {group.title}
                   </h3>
-                  <p className="mt-1 text-[13px] leading-relaxed text-slate-400">
+                  <p className="mt-0.5 text-[12px] leading-relaxed text-slate-400">
                     {group.description}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 grid auto-rows-fr grid-cols-2 content-start gap-3 sm:grid-cols-3">
+              <div className="mt-4 grid auto-rows-fr grid-cols-2 content-start gap-1.5 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {group.skills.map((skill) => {
                   const SkillIcon = techIcons[skill.icon] ?? Globe;
                   const color = techColors[skill.icon] ?? "#45DCFF";
                   return (
                     <div
                       key={skill.name}
-                      className="flex h-full flex-col items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-ink-950/60 px-2 py-4 text-center transition-colors hover:border-primary/40 hover:bg-white/5"
+                      className="flex h-full flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-ink-950/60 px-1.5 py-2.5 text-center transition-colors hover:border-primary/40 hover:bg-white/5"
                     >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/4">
-                        <SkillIcon size={20} style={{ color }} />
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-white/10 bg-white/4">
+                        <SkillIcon size={15} style={{ color }} />
                       </span>
-                      <span className="text-[12.5px] font-semibold leading-snug text-slate-100">
+                      <span className="text-[11px] font-semibold leading-snug text-slate-100">
                         {skill.name}
                       </span>
                     </div>

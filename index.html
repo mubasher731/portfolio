@@ -25,6 +25,29 @@
       rel="stylesheet"
     />
     <title>Mubasher Manzoor | Mobile Application Developer</title>
+    <script>
+      /* Applies the saved appearance before first paint so the page never
+         flashes the wrong theme. Defaults mirror src/theme/palettes.js. */
+      (() => {
+        try {
+          const root = document.documentElement;
+          const accents = ["cyan", "violet", "emerald", "amber", "rose"];
+          const stored = localStorage.getItem("portfolio:theme");
+          const mode =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          const accent = localStorage.getItem("portfolio:accent");
+          root.dataset.theme = mode;
+          root.dataset.accent = accents.includes(accent) ? accent : "cyan";
+          root.style.colorScheme = mode;
+        } catch {
+          /* Storage blocked — the dark default from index.css stands. */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
