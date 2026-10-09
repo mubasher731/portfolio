@@ -3,7 +3,7 @@ const tones = {
   accent: "border-accent/30 bg-accent/12 text-accent",
   emerald: "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
   amber: "border-amber-400/30 bg-amber-400/10 text-amber-300",
-  neutral: "border-white/12 bg-white/[0.05] text-slate-300",
+  neutral: "border-white/12 bg-white/5 text-slate-300",
 };
 
 /**

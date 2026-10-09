@@ -11,7 +11,7 @@ const PhoneMock = ({ icon }) => {
   const color = techColors[icon] ?? "#45DCFF";
 
   return (
-    <div className="relative h-[6.5rem] w-16 rounded-[1.1rem] border border-white/15 bg-ink-950/85 p-1.5 shadow-2xl shadow-black/60">
+    <div className="relative h-26 w-16 rounded-[1.1rem] border border-white/15 bg-ink-950/85 p-1.5 shadow-2xl shadow-black/60">
       <span className="absolute left-1/2 top-1.5 h-0.5 w-5 -translate-x-1/2 rounded-full bg-white/25" />
       <div className="mt-3 grid h-[calc(100%-0.75rem)] w-full place-items-center rounded-xl bg-linear-to-br from-primary/20 to-accent/10">
         <Icon size={24} style={{ color }} />
@@ -33,7 +33,7 @@ const Projects = () => (
             {/* Preview header */}
             <div className="relative flex h-44 items-center justify-center overflow-hidden border-b border-white/5 bg-linear-to-br from-primary/18 via-accent/10 to-transparent">
               <div className="grid-bg absolute inset-0 opacity-60" />
-              <span className="absolute right-5 top-2 font-display text-5xl font-black text-white/[0.06]">
+              <span className="absolute right-5 top-2 font-display text-5xl font-black text-white/6">
                 {String(index + 1).padStart(2, "0")}
               </span>
 
@@ -69,7 +69,7 @@ const Projects = () => (
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[12px] font-medium text-slate-300"
+                    className="rounded-full border border-white/10 bg-white/4 px-2.5 py-1 text-[12px] font-medium text-slate-300"
                   >
                     {tech}
                   </span>

@@ -11,7 +11,7 @@ const Education = () => (
       />
 
       <div className="relative mt-14">
-        <span className="absolute left-[15px] top-2 hidden h-[calc(100%-1rem)] w-px bg-linear-to-b from-primary/60 via-white/10 to-transparent sm:block" />
+        <span className="absolute left-3.75 top-2 hidden h-[calc(100%-1rem)] w-px bg-linear-to-b from-primary/60 via-white/10 to-transparent sm:block" />
 
         <div className="space-y-6">
           {education.map((item) => (
@@ -51,7 +51,7 @@ const Education = () => (
                     {item.highlights.map((highlight) => (
                       <span
                         key={highlight}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-medium text-slate-300"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/4 px-3 py-1 text-[11px] font-medium text-slate-300"
                       >
                         <CheckCircle2 size={12} className="text-primary/80" />
                         {highlight}

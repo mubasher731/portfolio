@@ -7,7 +7,7 @@ const variants = {
   primary:
     "bg-linear-to-r from-primary to-primary-light text-on-primary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40",
   outline:
-    "border border-white/15 bg-white/[0.03] text-white backdrop-blur hover:border-primary/60 hover:text-primary-light",
+    "border border-white/15 bg-white/3 text-white backdrop-blur hover:border-primary/60 hover:text-primary-light",
   soft: "border border-primary/25 bg-primary/12 text-primary-light hover:bg-primary/20",
   ghost: "text-slate-300 hover:text-white",
 };

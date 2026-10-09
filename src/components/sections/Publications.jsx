@@ -130,7 +130,7 @@ const Publications = () => {
                 {metadata.map((item) => (
                   <span
                     key={item.label}
-                    className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"
+                    className="rounded-xl border border-white/10 bg-white/3 px-3 py-2"
                   >
                     <span className="block text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                       {item.label}
@@ -169,7 +169,7 @@ const Publications = () => {
               </div>
 
               {/* Abstract */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/2 p-5">
                 <Quote size={16} className="text-primary/70" />
                 <p className="mt-2 text-[13.5px] leading-relaxed text-slate-400">
                   {paper.abstract}
@@ -181,7 +181,7 @@ const Publications = () => {
                 {paper.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-300"
+                    className="rounded-full border border-white/10 bg-white/4 px-2.5 py-1 text-[11px] font-medium text-slate-300"
                   >
                     {tag}
                   </span>
@@ -193,7 +193,7 @@ const Publications = () => {
                 <button
                   type="button"
                   onClick={copyCitation}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary-light"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/3 px-5 py-2.5 text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary-light"
                 >
                   {copied ? (
                     <Check size={15} className="text-emerald-400" />
@@ -248,7 +248,7 @@ const Publications = () => {
       {notice ? (
         <div
           role="status"
-          className="print-hidden fixed bottom-6 left-1/2 z-[110] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-ink-900/95 px-4 py-2.5 text-[13px] font-semibold text-white shadow-2xl shadow-black/50 backdrop-blur-xl"
+          className="print-hidden fixed bottom-6 left-1/2 z-110 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-ink-900/95 px-4 py-2.5 text-[13px] font-semibold text-white shadow-2xl shadow-black/50 backdrop-blur-xl"
         >
           <ShieldAlert size={15} className="text-primary-light" />
           {notice}

@@ -51,9 +51,9 @@ const Hero = () => {
           {/* ---------------------------------------------------------------- */}
           {/* Portrait                                                         */}
           {/* ---------------------------------------------------------------- */}
-          <div className="relative mx-auto aspect-square w-full max-w-[15rem] sm:max-w-[18rem] lg:mx-0 lg:ml-auto lg:max-w-[21rem]">
+          <div className="relative mx-auto aspect-square w-full max-w-60 sm:max-w-72 lg:mx-0 lg:ml-auto lg:max-w-84">
             <div className="absolute -inset-6 rounded-full bg-linear-to-tr from-primary/25 via-accent/15 to-transparent blur-3xl" />
-            <div className="relative h-full w-full rounded-full bg-linear-to-tr from-primary via-primary-light to-accent p-[3px] shadow-2xl shadow-primary/20">
+            <div className="relative h-full w-full rounded-full bg-linear-to-tr from-primary via-primary-light to-accent p-0.75 shadow-2xl shadow-primary/20">
               <img
                 src={assets.profile}
                 alt={`Portrait of ${profile.name}`}

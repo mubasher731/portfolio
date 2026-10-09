@@ -33,7 +33,7 @@ const Navbar = () => {
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent"
         />
-        <nav className="relative container-x flex h-[4.5rem] items-center gap-3 sm:h-20">
+        <nav className="relative container-x flex h-18 items-center gap-3 sm:h-20">
           {/* ---------------------------------------------------------------- */}
           {/* Brand                                                            */}
           {/* ---------------------------------------------------------------- */}
@@ -44,7 +44,7 @@ const Navbar = () => {
             aria-label="Back to top"
           >
             <span className="relative grid h-10 w-10 shrink-0 place-items-center sm:h-11 sm:w-11">
-              <span className="absolute inset-0 rounded-full bg-linear-to-tr from-primary to-accent p-[2px]">
+              <span className="absolute inset-0 rounded-full bg-linear-to-tr from-primary to-accent p-0.5">
                 <span className="block h-full w-full rounded-full bg-ink-900" />
               </span>
               <img
@@ -74,7 +74,7 @@ const Navbar = () => {
                     className={`rounded-full px-4 py-2.5 font-display text-[15px] font-semibold tracking-tight transition-all duration-200 ${
                       activeItem
                         ? "bg-primary/15 text-primary-light ring-1 ring-inset ring-primary/30"
-                        : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                        : "text-slate-300 hover:bg-white/6 hover:text-white"
                     }`}
                   >
                     {item.name}
@@ -118,7 +118,7 @@ const Navbar = () => {
               type="button"
               onClick={() => setOpen(true)}
               aria-label="Open navigation menu"
-              className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-white transition hover:border-primary/50 hover:text-primary-light lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/4 text-white transition hover:border-primary/50 hover:text-primary-light lg:hidden"
             >
               <Menu size={20} />
             </button>
@@ -132,14 +132,14 @@ const Navbar = () => {
       <div
         onClick={() => setOpen(false)}
         aria-hidden="true"
-        className={`fixed inset-0 z-[60] bg-ink-950/75 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-60 bg-ink-950/75 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
 
       <aside
         aria-hidden={!open}
-        className={`fixed right-0 top-0 z-[70] flex h-full w-[84%] max-w-sm flex-col border-l border-white/10 bg-ink-900/95 p-6 backdrop-blur-xl transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed right-0 top-0 z-70 flex h-full w-[84%] max-w-sm flex-col border-l border-white/10 bg-ink-900/95 p-6 backdrop-blur-xl transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >

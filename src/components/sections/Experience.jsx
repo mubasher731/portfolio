@@ -11,7 +11,7 @@ const Experience = () => (
       />
 
       <div className="relative mt-14">
-        <span className="absolute left-[15px] top-2 hidden h-[calc(100%-1rem)] w-px bg-linear-to-b from-primary/60 via-white/10 to-transparent sm:block" />
+        <span className="absolute left-3.75 top-2 hidden h-[calc(100%-1rem)] w-px bg-linear-to-b from-primary/60 via-white/10 to-transparent sm:block" />
 
         <div className="space-y-6">
           {experience.map((job) => (

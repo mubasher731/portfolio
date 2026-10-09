@@ -1,5 +1,17 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Check, User, MessageSquare } from "lucide-react";
+import { useForm } from "react-hook-form";
+import useWeb3Forms from "@web3forms/react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Check,
+  User,
+  MessageSquare,
+  Loader2,
+  AlertCircle,
+} from "lucide-react";
 import {
   FaGithub,
   FaLinkedinIn,
@@ -10,6 +22,22 @@ import {
 import SectionHeading from "../ui/SectionHeading";
 import Card from "../ui/Card";
 import { profile } from "../../data/portfolio";
+
+/* -------------------------------------------------------------------------- */
+/*  Web3Forms configuration                                                    */
+/* -------------------------------------------------------------------------- */
+/* Deliveries are routed by an access key, which is public by design: it can
+   only send mail to the inbox it was created for, so shipping it to the
+   browser is safe. It lives in the environment so it is not tied to a source
+   file:
+
+     .env.local       VITE_WEB3FORMS_ACCESS_KEY=...
+     Vercel           Settings → Environment Variables, then redeploy
+
+   Vite inlines VITE_* variables at build time, so a redeploy is required
+   after changing it. See .env.example. */
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? "";
+const IS_CONFIGURED = ACCESS_KEY.trim().length > 0;
 
 /* ---------- Social config (icons + brand colors + real links) ---------- */
 const socialLinks = [
@@ -56,26 +84,74 @@ const socialLinks = [
   },
 ];
 
-const emptyForm = { name: "", email: "", message: "" };
+/* Validation lives here so the fields below stay readable. */
+const rules = {
+  name: {
+    required: "Please enter your name",
+    maxLength: { value: 80, message: "That name looks too long" },
+  },
+  email: {
+    required: "Please enter your email",
+    pattern: {
+      value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+      message: "Please enter a valid email address",
+    },
+  },
+  message: {
+    required: "Please write a short message",
+    minLength: { value: 10, message: "Please add a little more detail" },
+    maxLength: { value: 2000, message: "Please keep it under 2000 characters" },
+  },
+};
+
+const FieldError = ({ id, children }) => (
+  <p
+    id={id}
+    role="alert"
+    className="mt-2 flex items-center gap-1.5 text-[12.5px] font-medium text-rose-300"
+  >
+    <AlertCircle size={13} className="shrink-0" />
+    {children}
+  </p>
+);
 
 const Contact = () => {
-  const [form, setForm] = useState(emptyForm);
-  const [sent, setSent] = useState(false);
+  const [state, setState] = useState("idle"); // idle | sending | success | error
+  const [feedback, setFeedback] = useState("");
 
-  const update = (field) => (event) =>
-    setForm((current) => ({ ...current, [field]: event.target.value }));
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { name: "", email: "", message: "", botcheck: false },
+    mode: "onTouched",
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const { submit } = useWeb3Forms({
+    access_key: ACCESS_KEY,
+    settings: {
+      from_name: `${profile.name} — Portfolio`,
+      subject: "New message from your portfolio",
+    },
+    onSuccess: (message) => {
+      setState("success");
+      setFeedback(message || "Thanks! Your message is on its way to my inbox.");
+      reset();
+    },
+    onError: (message) => {
+      setState("error");
+      setFeedback(
+        message || "Sorry, the message could not be sent right now.",
+      );
+    },
+  });
 
-    const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+  const onSubmit = async (values) => {
+    setState("sending");
+    setFeedback("");
+    await submit(values);
   };
 
   const details = [
@@ -96,11 +172,17 @@ const Contact = () => {
     },
   ];
 
-  const inputWrapper =
-    "group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 transition focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/20";
+  const fieldShell = (invalid) =>
+    `group flex items-center gap-3 rounded-2xl border bg-white/3 px-4 transition ${
+      invalid
+        ? "border-rose-400/50 focus-within:border-rose-400 focus-within:ring-2 focus-within:ring-rose-400/20"
+        : "border-white/10 focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/20"
+    }`;
 
   const inputClass =
     "w-full bg-transparent py-3.5 text-sm text-white placeholder:text-slate-500 focus:outline-none";
+
+  const sending = state === "sending";
 
   return (
     <section id="contact" className="relative py-20 md:py-28">
@@ -117,7 +199,7 @@ const Contact = () => {
           {details.map((detail) => {
             const Icon = detail.icon;
             const chip = (
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-[13px] font-medium text-slate-300 transition hover:border-primary/60 hover:text-primary-light">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/3 px-5 py-2.5 text-[13px] font-medium text-slate-300 transition hover:border-primary/60 hover:text-primary-light">
                 <Icon size={15} className="text-primary-light" />
                 {detail.value}
               </span>
@@ -139,55 +221,159 @@ const Contact = () => {
             <h3 className="font-display text-xl font-bold text-white">
               Send a Message
             </h3>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-slate-400">
+              Fill this in and it lands straight in my inbox — I usually reply
+              within a day.
+            </p>
 
-            <form onSubmit={handleSubmit} className="mt-6">
-              <div className={inputWrapper}>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="mt-6"
+            >
+              {/* Honeypot: invisible to people, filled by bots — Web3Forms
+                  drops any submission where this is set. */}
+              <input
+                type="checkbox"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                {...register("botcheck")}
+              />
+
+              <label htmlFor="contact-name" className="sr-only">
+                Your name
+              </label>
+              <div className={fieldShell(errors.name)}>
                 <User size={16} className="shrink-0 text-slate-500" />
                 <input
+                  id="contact-name"
                   type="text"
-                  required
-                  value={form.name}
-                  onChange={update("name")}
+                  autoComplete="name"
                   placeholder="Name"
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
                   className={inputClass}
+                  {...register("name", rules.name)}
                 />
               </div>
+              {errors.name ? (
+                <FieldError id="contact-name-error">
+                  {errors.name.message}
+                </FieldError>
+              ) : null}
 
-              <div className={`${inputWrapper} mt-4`}>
+              <label htmlFor="contact-email" className="sr-only">
+                Your email
+              </label>
+              <div className={`${fieldShell(errors.email)} mt-4`}>
                 <Mail size={16} className="shrink-0 text-slate-500" />
                 <input
+                  id="contact-email"
                   type="email"
-                  required
-                  value={form.email}
-                  onChange={update("email")}
+                  autoComplete="email"
                   placeholder="Email"
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={
+                    errors.email ? "contact-email-error" : undefined
+                  }
                   className={inputClass}
+                  {...register("email", rules.email)}
                 />
               </div>
+              {errors.email ? (
+                <FieldError id="contact-email-error">
+                  {errors.email.message}
+                </FieldError>
+              ) : null}
 
-              <div className={`${inputWrapper} mt-4 items-start`}>
+              <label htmlFor="contact-message" className="sr-only">
+                Your message
+              </label>
+              <div className={`${fieldShell(errors.message)} mt-4 items-start`}>
                 <MessageSquare
                   size={16}
                   className="mt-4 shrink-0 text-slate-500"
                 />
                 <textarea
-                  required
+                  id="contact-message"
                   rows={6}
-                  value={form.message}
-                  onChange={update("message")}
                   placeholder="Message"
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={
+                    errors.message ? "contact-message-error" : undefined
+                  }
                   className={`${inputClass} resize-none`}
+                  {...register("message", rules.message)}
                 />
               </div>
+              {errors.message ? (
+                <FieldError id="contact-message-error">
+                  {errors.message.message}
+                </FieldError>
+              ) : null}
+
+              {state === "success" ? (
+                <p
+                  role="status"
+                  className="mt-5 flex items-start gap-2 rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-4 py-3 text-[13px] font-medium text-emerald-300"
+                >
+                  <Check size={15} className="mt-0.5 shrink-0" />
+                  {feedback}
+                </p>
+              ) : null}
+
+              {state === "error" ? (
+                <p
+                  role="alert"
+                  className="mt-5 flex items-start gap-2 rounded-2xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-[13px] font-medium text-rose-300"
+                >
+                  <AlertCircle size={15} className="mt-0.5 shrink-0" />
+                  <span>
+                    {feedback} You can always reach me directly at{" "}
+                    <a
+                      href={`mailto:${profile.email}`}
+                      className="font-semibold underline"
+                    >
+                      {profile.email}
+                    </a>
+                    .
+                  </span>
+                </p>
+              ) : null}
+
+              {!IS_CONFIGURED ? (
+                <p className="mt-5 flex items-start gap-2 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 text-[12.5px] leading-relaxed text-amber-300">
+                  <AlertCircle size={14} className="mt-0.5 shrink-0" />
+                  <span>
+                    The form is not wired up yet: set{" "}
+                    <code className="font-semibold">
+                      VITE_WEB3FORMS_ACCESS_KEY
+                    </code>{" "}
+                    in your environment (see{" "}
+                    <code className="font-semibold">.env.example</code>), or
+                    email me at{" "}
+                    <a
+                      href={`mailto:${profile.email}`}
+                      className="font-semibold underline"
+                    >
+                      {profile.email}
+                    </a>
+                    .
+                  </span>
+                </p>
+              ) : null}
 
               <button
                 type="submit"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-blue-500 to-emerald-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition hover:brightness-110 active:scale-[0.99]"
+                disabled={sending || !IS_CONFIGURED}
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-primary to-primary-light px-6 py-3.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/25 transition hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:brightness-100"
               >
-                {sent ? (
+                {sending ? (
                   <>
-                    <Check size={16} />
-                    Opening your mail app
+                    <Loader2 size={16} className="animate-spin" />
+                    Sending…
                   </>
                 ) : (
                   <>
