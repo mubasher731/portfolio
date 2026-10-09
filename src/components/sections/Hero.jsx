@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Button from "../ui/Button";
 import Badge from "../ui/Badge";
 import { scrollToSection } from "../../utils/scroll";
-import { profile, stats, socials, assets } from "../../data/portfolio";
+import { profile, assets } from "../../data/portfolio";
 
 const socialIcons = {
   github: FaGithub,

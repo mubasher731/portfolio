@@ -8,9 +8,6 @@ const Experience = () => (
     <div className="container-x">
       <SectionHeading
         eyebrow="Work Experience"
-        // title="Work"
-        // highlight="Experience"
-        // description="A short history of the teams and mobile products I've contributed to."
       />
 
       <div className="relative mt-14">
@@ -26,36 +23,36 @@ const Experience = () => (
               <Card className="p-6">
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-display text-lg font-bold text-white">
+                    <h3 className="font-display text-xl font-bold text-white">
                       {job.role}
                     </h3>
-                    <p className="mt-0.5 text-sm font-semibold text-primary-light">
+                    <p className="mt-1 text-[15px] font-semibold text-primary-light">
                       {job.company}
-                      <span className="ml-2 rounded-full border border-white/10 px-2 py-0.5 text-[11px] font-medium text-slate-400">
+                      <span className="ml-2 rounded-full border border-white/10 px-2 py-0.5 text-[12px] font-medium text-slate-400">
                         {job.type}
                       </span>
                     </p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-400">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13px] text-slate-400">
                     <span className="inline-flex items-center gap-1.5">
-                      <Calendar size={12} className="text-primary" />
+                      <Calendar size={13} className="text-primary" />
                       {job.duration}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <MapPin size={12} className="text-primary" />
+                      <MapPin size={13} className="text-primary" />
                       {job.location}
                     </span>
                   </div>
                 </div>
 
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-5 space-y-2.5">
                   {job.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-slate-400"
+                      className="flex items-start gap-2.5 text-[15px] leading-7 text-slate-400"
                     >
                       <CheckCircle2
-                        size={15}
+                        size={16}
                         className="mt-0.5 shrink-0 text-primary/80"
                       />
                       {point}

@@ -16,20 +16,17 @@ const Skills = () => (
     <div className="container-x">
       <SectionHeading
         eyebrow="Skills"
-        // title="My mobile"
-        // highlight="toolkit"
-        // description="The languages, frameworks and platforms I use to design, build and ship applications."
       />
 
-      {/* One simple block per group. Every technology sits in an equal-size
-          tile so the grid stays aligned no matter how long the name is. */}
-      <div className="mt-14 space-y-6">
+      {/* Group cards flow into two balanced columns — uneven skill counts
+          never leave an empty gap inside a card. */}
+      <div className="mt-14 gap-5 md:columns-2 xl:gap-6">
         {skillGroups.map((group) => {
           const Icon = groupIcons[group.icon] ?? FaMobileAlt;
           return (
             <div
               key={group.id}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8"
+              className="mb-5 flex break-inside-avoid flex-col rounded-2xl border border-white/10 bg-white/3 p-6 transition-colors hover:border-primary/25 xl:mb-6"
             >
               <div className="flex items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10 bg-ink-900 text-primary-light">
@@ -45,19 +42,19 @@ const Skills = () => (
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-6 grid auto-rows-fr grid-cols-2 content-start gap-3 sm:grid-cols-3">
                 {group.skills.map((skill) => {
                   const SkillIcon = techIcons[skill.icon] ?? Globe;
                   const color = techColors[skill.icon] ?? "#45DCFF";
                   return (
                     <div
                       key={skill.name}
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-ink-950/60 px-3.5 py-3"
+                      className="flex h-full flex-col items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-ink-950/60 px-2 py-4 text-center transition-colors hover:border-primary/40 hover:bg-white/5"
                     >
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[0.04]">
-                        <SkillIcon size={18} style={{ color }} />
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/4">
+                        <SkillIcon size={20} style={{ color }} />
                       </span>
-                      <span className="truncate text-[13px] font-semibold text-white">
+                      <span className="text-[12.5px] font-semibold leading-snug text-slate-100">
                         {skill.name}
                       </span>
                     </div>

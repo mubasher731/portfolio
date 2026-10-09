@@ -52,16 +52,16 @@ const Projects = () => (
 
             {/* Body */}
             <div className="flex flex-1 flex-col p-6">
-              <h3 className="font-display text-lg font-bold text-white transition-colors group-hover:text-primary-light">
+              <h3 className="font-display text-xl font-bold text-white transition-colors group-hover:text-primary-light">
                 {project.title}
               </h3>
               {project.subtitle ? (
-                <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-slate-500">
+                <p className="mt-1 text-[12.5px] font-medium uppercase tracking-wider text-slate-500">
                   {project.subtitle}
                 </p>
               ) : null}
 
-              <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-slate-400 text-justify">
+              <p className="mt-3 flex-1 text-[15px] leading-7 text-slate-400 text-justify">
                 {project.description}
               </p>
 
@@ -69,7 +69,7 @@ const Projects = () => (
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-slate-300"
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[12px] font-medium text-slate-300"
                   >
                     {tech}
                   </span>
@@ -83,7 +83,7 @@ const Projects = () => (
                       href={project.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-light transition hover:text-white"
+                      className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary-light transition hover:text-white"
                     >
                       <ExternalLink size={14} />
                       Live demo
@@ -94,7 +94,7 @@ const Projects = () => (
                       href={project.source}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-slate-400 transition hover:text-white"
+                      className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-slate-400 transition hover:text-white"
                     >
                       <Code2 size={14} />
                       Source

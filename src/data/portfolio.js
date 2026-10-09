@@ -96,11 +96,11 @@ export const primaryNav = [
 /* -------------------------------------------------------------------------- */
 
 // TODO: replace the "#" placeholders with your real profile URLs
-export const socials = [
-  { name: "GitHub", icon: "github", url: "https://github.com/" },
-  { name: "LinkedIn", icon: "linkedin", url: "https://linkedin.com/in/" },
-  { name: "Email", icon: "mail", url: "mailto:mubasher.manzoor@gmail.com" },
-];
+// export const socials = [
+//   { name: "GitHub", icon: "github", url: "https://github.com/" },
+//   { name: "LinkedIn", icon: "linkedin", url: "https://linkedin.com/in/" },
+//   { name: "Email", icon: "mail", url: "mailto:mubasher.manzoor@gmail.com" },
+// ];
 
 /* -------------------------------------------------------------------------- */
 /*  Hero statistics                                                            */
@@ -138,13 +138,12 @@ export const skillGroups = [
     icon: "server",
     skills: [
       { name: "Firebase", icon: "Firebase", level: 88 },
-      { name: "REST APIs & Asyc Operations", icon: "RestApi & Asyc Operations", level: 88 },
+      { name: "REST APIs & Async Operations", icon: "RestApi", level: 88 },
       { name: "Node.js", icon: "NodeJs", level: 78 },
       { name: "MongoDB", icon: "MongoDB", level: 78 },
       { name: "MySQL", icon: "MySQL", level: 75 },
       { name: "Supabase", icon: "Supabase", level: 72 },
       { name: "Redux Toolkit", icon: "ReduxToolkit", level: 72 },
-      { name: "Supabase", icon: "Supabase", level: 72 },
       { name: "WebRTC", icon: "WebRTC", level: 72 },
     ],
   },
@@ -299,9 +298,6 @@ export const projects = [
     ],
     category: "Android & iOS",
     icon: "ReactNative",
-    live: "",
-    source: "#",
-    //featured: true,
   },
   {
     id: 2,
@@ -319,9 +315,6 @@ export const projects = [
     ],
     category: "Android & iOS",
     icon: "ReactNative",
-    live: "",
-    source: "#",
-    //featured: true,
   },
   {
     id: 3,
@@ -332,9 +325,6 @@ export const projects = [
     tech: ["UI/UX", "Figma", "Design System", "Responsive Design"],
     category: "Android & iOS",
     icon: "Expo",
-    live: "",
-    source: "#",
-    //featured: false,
   },
   {
     id: 4,
@@ -345,9 +335,6 @@ export const projects = [
     tech: ["Firebase", "Redux", "Push Notifications"],
     category: "Android",
     icon: "ReactNative",
-    live: "",
-    source: "#",
-    //featured: false,
   },
   {
     id: 5,
@@ -365,9 +352,6 @@ export const projects = [
     ],
     category: "Android",
     icon: "Python",
-    live: "",
-    source: "#",
-    //featured: true,
   },
 ];
 

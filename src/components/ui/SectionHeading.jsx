@@ -1,8 +1,12 @@
 /**
- * Consistent section header: small eyebrow pill, big title, optional blurb.
+ * Consistent section header: an optional eyebrow, a large left-aligned title
+ * and a blurb. Text only — no panel or background.
  *
- * @param {"center"|"left"} [align]
- * @param {string} [eyebrow]
+ * `eyebrow` doubles as the heading when `title` is omitted, so simple sections
+ * can use `<SectionHeading eyebrow="Skills" />` and still get a full-size title.
+ *
+ * @param {"left"|"center"} [align]
+ * @param {string} [eyebrow]    - small label; the heading when `title` is absent
  * @param {string} [title]      - plain part of the heading
  * @param {string} [highlight]  - gradient part of the heading
  * @param {string} [description]
@@ -12,36 +16,43 @@ const SectionHeading = ({
   title,
   highlight,
   description,
-  align = "center",
+  align = "left",
   className = "",
 }) => {
   const isLeft = align === "left";
+  const heading = title ?? eyebrow;
+  const showEyebrow = Boolean(title && eyebrow);
 
   return (
     <div
-      className={`flex max-w-2xl flex-col ${
-        isLeft ? "items-start text-left" : "mx-auto items-center text-center"
+      className={`flex flex-col ${
+        isLeft ? "items-start text-left" : "items-center text-center"
       } ${className}`}
     >
-      {eyebrow ? (
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-light">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary-light" />
+      {showEyebrow ? (
+        <span className="text-xs font-semibold uppercase tracking-[0.22em] text-primary-light">
           {eyebrow}
         </span>
       ) : null}
 
-      <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-[2.6rem]">
-        {title}
-        {highlight ? (
-          <>
-            {" "}
-            <span className="gradient-text">{highlight}</span>
-          </>
-        ) : null}
-      </h2>
+      {heading ? (
+        <h2
+          className={`font-display text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-[2.5rem] ${
+            showEyebrow ? "mt-3" : ""
+          }`}
+        >
+          {heading}
+          {highlight ? (
+            <>
+              {" "}
+              <span className="gradient-text">{highlight}</span>
+            </>
+          ) : null}
+        </h2>
+      ) : null}
 
       {description ? (
-        <p className="mt-4 text-[15px] leading-relaxed text-slate-400">
+        <p className="mt-3.5 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-[15px]">
           {description}
         </p>
       ) : null}
